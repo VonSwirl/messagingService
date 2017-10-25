@@ -6,7 +6,7 @@ app.use(bodyParser.json());
 
 //app.set('view engine', 'pug');
 
-//index page
+//index page need to be completed
 app.get('/', function(req,res){
     res.send("hello world");
 });
