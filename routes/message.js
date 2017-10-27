@@ -1,4 +1,5 @@
 var express = require('express');
+const Message = require('../models/messageObj.js');
 
 var router = express.Router();
 
@@ -9,8 +10,11 @@ router.get('/:id', function(req, res){
 });
 
 //new message being posted to the system (can also contain an invoice)
-router.post('/:id', function(req, res){
-    res.send('You are looking to post a messages that says ' + req.params.id);
+router.post('/', function(req, res){
+    Message.create(req.body).then(function(message){
+        res.send(message);
+
+    });
 });
 
 module.exports = router;
