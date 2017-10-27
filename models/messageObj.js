@@ -4,12 +4,8 @@ const Schema = mongoose.Schema;
 
 //create message schema
 const MessageSchema = new Schema ({
-    messageID : {
-        type : String, 
-        required : [true, "Message Id is required"]
-    },
     messageTo : {
-        type : Array, 
+        type : String, 
         required : [true, "Message to is required"]
     },
     content : {
