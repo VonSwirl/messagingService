@@ -4,15 +4,16 @@ const Message = require('../models/messageObj.js');
 var router = express.Router();
 
 //new message page
-router.get('/:id', function(req, res,next){
+router.get('/newmessage/:id', function(req, res,next){
     var t = req.get.id;
     res.json({type : "newMessage", sender: "test" , content:"i am a message"});
 });
 
 
-router.get('/:id/:messageid', function(req, res, next){
+//Get messages by toid
+router.get('/:id', function(req, res, next){
     console.log(req.param.messageid);
-    Message.findById({_id: req.params.messageid}).then(function(message){
+    Message.findById({_id: req.query.messageid}).then(function(message){
         res.send(message);
 }).catch(next);
 

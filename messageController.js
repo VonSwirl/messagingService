@@ -8,7 +8,12 @@ var bodyParser = require('body-parser');
 mongoose.connect('mongodb://messageapp:mapp1@ds137435.mlab.com:37435/message-service');
 mongoose.Promise = global.Promise;
 
+app.use(express.static('public'));
 app.use(bodyParser.json());
+
+
+app.set('views', './views');
+app.set('view engine', 'pug');
 
 
 //init routes
