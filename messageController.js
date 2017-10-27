@@ -1,38 +1,12 @@
 var express = require('express');
-
-var bodyParser = require('body-parser');
 var app = express();
+var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
-//app.set('view engine', 'pug');
-
-//index page need to be completed
-app.get('/', function(req,res){
-    res.send("hello world");
-});
-
-//new invoice being posted to the system
-app.post('/newInvoiceMessage/:id', function(req, res){
-    res.send('You are looking to post a messages that says ' + req.params.id);
-});
+//Set up routes
+app.use('/message', require('./routes/message'));
+app.use('/message/list', require('./routes/messagelist'));
 
 
-//new message page
-app.get('/newmessagepage/:id', function(req, res){
 
-    var t = req.get.id;
-    res.json({sender: "test" , content:"i am a message"});
-});
-
-//message list page
-app.get('/messageList/:id', function(req, res){
-    res.send('you are asking for a message list for the customer with the id' + req.param.id);
-});
-
-//new message being posted to the system
-app.post('/newMessage/:id', function(req, res){
-    res.send('You are looking to post a messages that says ' + req.params.id);
-});
-
-
-app.listen(3000);
+app.listen(process.env.port || 3000);
