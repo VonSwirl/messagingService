@@ -9,12 +9,9 @@ router.get('/:id',function(req, res,next){
     Message.find({
         messageTo : qid
     }).then(function(messages){
-        res.render('messagelist');
+        res.render('messagelist',{message :  messages, name : qid});
     });
 });
 
-router.get('/bla', function (req, res) {
-    res.render('messagelist', { title: 'Hey', message: 'Hello there!' })
-  })
 
 module.exports = router;

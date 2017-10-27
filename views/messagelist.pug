@@ -1,5 +1,12 @@
 html
   head
-    title !{title}
+    title test
   body
-    h1= message
+    h1 Messages for customer #{name}
+    each stuff in message
+      p= stuff.content
+      p= stuff.date
+      p= stuff.doclink
+      p  |
+
+

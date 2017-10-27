@@ -6,12 +6,14 @@ var router = express.Router();
 //new message page
 router.get('/newmessage/:id', function(req, res,next){
     var t = req.get.id;
-    res.json({type : "newMessage", sender: "test" , content:"i am a message"});
+    res.render('newmessage');
 });
 
 
-//Get messages by toid
-router.get('/:id', function(req, res, next){
+
+
+//Get a particular message 
+router.get('/getmessage/:id', function(req, res, next){
     console.log(req.param.messageid);
     Message.findById({_id: req.query.messageid}).then(function(message){
         res.send(message);
@@ -22,6 +24,7 @@ router.get('/:id', function(req, res, next){
 
 //new message being posted to the system (can also contain an invoice)
 router.post('/', function(req, res, next){
+    console.log(req.body);
     if (req.body.messageTo.constructor == Array){
         for (var i = 0; i < req.body.messageTo.length; i++){
            console.log(req.body.messageTo[i]);
