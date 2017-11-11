@@ -1,16 +1,14 @@
 var express = require('express');
 var app = express();
+var bodyparse = require('body-parser');
 var mongoose = require('mongoose');
-var bodyParser = require('body-parser');
+var config = require('./config');
 
-
-//connect to mongodb
-mongoose.connect('mongodb://messageapp:mapp1@ds137435.mlab.com:37435/message-service');
+mongoose.connect(config.databaseURL);
 mongoose.Promise = global.Promise;
 
-app.use(express.static('public'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyparse.json());
+app.use(bodyparse.urlencoded({extended: true}));
 
 app.use(express.static('public'));
 app.set('views', './views');

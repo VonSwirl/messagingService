@@ -1,16 +1,16 @@
 doctype html
 html(lang="en")
   link(rel='stylesheet', href='/src/main/bootstrap/bootstrap.min.css', type='text/css')
+  include customer.html
   head
-    include staff.html
-    block container
     title test
   body
     h1 Messages for customer #{name}
+    h4 -------------------------------------------------------------------------------------------------------------------
     each stuff in message
       div 
+        h4= stuff.date
         p= stuff.content
-        p= stuff.date
         p= stuff.doclink
-        p  |
+        
 
