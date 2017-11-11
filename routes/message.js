@@ -6,7 +6,7 @@ var router = express.Router();
 //new message page
 router.get('/newmessage/:id', function(req, res,next){
     var t = req.get.id;
-    res.render('newmessage');
+    res.render('newmessage.pug');
 });
 
 

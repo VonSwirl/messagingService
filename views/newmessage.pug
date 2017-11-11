@@ -1,6 +1,14 @@
-form(action="/message", method="post")
-    h To
-    input(type="text", name="messageTo")
-    h Content
-    textarea(name="content", cols="30", rows="10")
-    input(type="submit", value="send message")
+doctype html
+html(lang="en")
+  link(rel='stylesheet', href='/src/main/bootstrap/bootstrap.min.css', type='text/css')
+  head
+    include staff.html
+    title test
+    body
+        h1 tersting
+        form(action="/message", method="post")
+            h To
+            input(type="text", name="messageTo")
+            h Content
+            textarea(name="content", cols="30", rows="10")
+            input(type="submit", value="send message")

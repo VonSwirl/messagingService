@@ -9,7 +9,7 @@ router.get('/:id',function(req, res,next){
     Message.find({
         messageTo : qid
     }).then(function(messages){
-        res.render('messagelist',{message :  messages, name : qid});
+        res.render('messagelist.pug',{message :  messages, name : qid});
     });
 });
 

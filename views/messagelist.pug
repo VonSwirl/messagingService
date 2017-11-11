@@ -1,12 +1,16 @@
-html
+doctype html
+html(lang="en")
+  link(rel='stylesheet', href='/src/main/bootstrap/bootstrap.min.css', type='text/css')
   head
+    include staff.html
+    block container
     title test
   body
     h1 Messages for customer #{name}
     each stuff in message
-      p= stuff.content
-      p= stuff.date
-      p= stuff.doclink
-      p  |
-
+      div 
+        p= stuff.content
+        p= stuff.date
+        p= stuff.doclink
+        p  |
 
