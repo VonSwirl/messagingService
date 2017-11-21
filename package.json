@@ -12,6 +12,6 @@
     "serve-favicon": "~2.4.5"
   },
   "scripts" : {
-      "start" : "messageController.js"
+      "start" : "node messageController.js"
   }
 }

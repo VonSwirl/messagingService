@@ -15,6 +15,10 @@ app.set('views', './views');
 app.set('view engine', 'pug');
 
 
+app.get('/', function(req,res){
+    res.send('I am a fake index page');
+
+})
 //init routes
 app.use('/message', require('./routes/message'));
 
@@ -23,4 +27,4 @@ app.use(function(err, req, res, next){
     res.status(422).send({err : err.message});
 });
 
-app.listen(process.env.port || 3000);
+app.listen(process.env.PORT || 3000);
