@@ -9,10 +9,14 @@ html(lang="en")
     form(action="/message", method="post")
       li
         h To
-        input(type="text", name="messageTo")
+        input(type="text", name="messageTo", cols="100") 
       li
         h Content
       li
         |
         textarea(name="content", cols="100", rows="10")
-      input(type="submit", value="send message")
+      button(type="submit", onClick="javascript:alert('Message Sent')") Send Message
+
+    p Note - To send to multiple customers split with ';'
+
+  

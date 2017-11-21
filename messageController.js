@@ -17,7 +17,6 @@ app.set('view engine', 'pug');
 
 //init routes
 app.use('/message', require('./routes/message'));
-app.use('/messagelist', require('./routes/messagelist'));
 
 //error handling middleware
 app.use(function(err, req, res, next){
