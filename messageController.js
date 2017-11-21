@@ -16,7 +16,7 @@ app.set('view engine', 'pug');
 
 
 app.get('/', function(req,res){
-    res.send('I am a fake index page');
+    res.redirect('/message/newmessage');
 })
 
 
