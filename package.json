@@ -11,6 +11,10 @@
     "morgan": "~1.9.0",
     "serve-favicon": "~2.4.5"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chris89culley/MessageService.git"
+  },
   "scripts" : {
       "start" : "node messageController.js"
   }
