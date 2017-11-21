@@ -10,5 +10,8 @@
     "pug": "^2.0.0-rc.4",
     "morgan": "~1.9.0",
     "serve-favicon": "~2.4.5"
+  },
+  "scripts" : {
+      "start" : "messageController.js"
   }
 }
