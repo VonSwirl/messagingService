@@ -17,8 +17,9 @@ app.set('view engine', 'pug');
 
 app.get('/', function(req,res){
     res.send('I am a fake index page');
-
 })
+
+
 //init routes
 app.use('/message', require('./routes/message'));
 

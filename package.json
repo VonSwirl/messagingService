@@ -7,15 +7,16 @@
     "debug": "~2.6.9",
     "express": "~4.15.5",
     "jade": "~1.11.0",
-    "pug": "^2.0.0-rc.4",
+    "mongoose": "^4.10.8",
     "morgan": "~1.9.0",
+    "pug": "^2.0.0-rc.4",
     "serve-favicon": "~2.4.5"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chris89culley/MessageService.git"
+    "url": "git+https://github.com/chris89culley/purchasingService.git"
   },
-  "scripts" : {
-      "start" : "node messageController.js"
+  "scripts": {
+    "start": "node messageController.js"
   }
 }
