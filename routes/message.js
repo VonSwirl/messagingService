@@ -5,7 +5,7 @@ var router = express.Router();
 
 //new message page
 router.get('/newmessage', function(req, res,next){
-    res.render('newmessage.pug');
+    res.render('newmessage.pug', {'person' : req.query.custid});
 });
 
 
