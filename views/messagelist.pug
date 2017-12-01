@@ -1,16 +1,78 @@
 doctype html
 html(lang="en")
   link(rel='stylesheet', href='/src/main/bootstrap/bootstrap.min.css', type='text/css')
-  include customer.html
   head
+    include staff.html
     title test
   body
-    h1 Messages for customer #{name}
-    h4 -------------------------------------------------------------------------------------------------------------------
-    each stuff in message
-      div 
-        h4= stuff.date
-        p= stuff.content
-        p= stuff.doclink
-        
+    h1.title Message list for cust :  #{name}
+    div.filtering 
+        input(type="text", id="filterByContent", onkeyup="filter(1)", placeholder= "Filter messages by content", class= "filterbox")
+        table(class= "table", id = "myTable")
+            thead
+                tr.tr
+                   th.clickable(onclick="sortTable(0)") Date 
+                   th.clickable(onclick="sortTable(1)") Content
+                   th.clickable(onclick="sortTable(2)") Link
+            tbody
+                each mess in message
+                        tr(class= table)
+                            td= mess.date.getDate() + "/" + mess.date.getMonth() + "/" + mess.date.getFullYear() + " @ " + mess.date.getHours() + ":" + mess.date.getMinutes()
+                            td= mess.content
+                            td= mess.doclink
 
+script.
+  function sortTable(n) {
+    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+    table = document.getElementById("myTable");
+    switching = true;
+    dir = "asc";
+    while (switching) {
+     switching = false;
+     rows = table.getElementsByTagName("TR");
+     for (i = 1; i < (rows.length - 1); i++) {
+       shouldSwitch = false;
+       x = rows[i].getElementsByTagName("TD")[n];
+       y = rows[i + 1].getElementsByTagName("TD")[n];
+       if (dir == "asc") {
+         if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+           shouldSwitch= true;
+           break;
+            }
+         } else if (dir == "desc") {
+         if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+           shouldSwitch= true;
+           break;
+         }
+             }
+        }
+        if (shouldSwitch) {
+           rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+           switching = true;
+           switchcount ++;
+        } else {
+        if (switchcount == 0 && dir == "asc") {
+          dir = "desc";
+          switching = true;
+         };
+        };
+        };
+    }
+    
+          
+script.
+   function filter(n) {
+            var input, filter, table, tr, td, i;
+            input = document.getElementById("filterByContent");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[n];
+                if (td) {
+                    if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                        } else { tr[i].style.display = "none"; }
+                    }
+                }
+            }

@@ -21,6 +21,7 @@ router.get('/getmessage/:id', function(req, res, next){
 router.get('/',function(req, res,next){
     var qid = req.query.custid != null ? req.query.custid : req.params.id;
     messageService.getAListOfMessages(qid).then(function(messages){
+        console.log(messages);
         res.render('messagelist.pug',{message :  messages, name : qid});
     })
     
