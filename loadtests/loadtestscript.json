@@ -1,0 +1,49 @@
+{
+	"config": {
+		"target": "https://enigmatic-cove-40131.herokuapp.com/message",
+		"phases": [{
+			"duration": 60,
+			"arrivalRate": 5
+		}],
+		"processor": "./fake-messages.js"
+	},
+
+	"scenarios": [{
+		"flow": [{
+				"function": "generateRandomData"
+			},
+			{
+			  "function": "generateRandomData",
+				"post": {
+					"url": "/",
+					"json": {
+						"messageTo": "{{ email }}",
+						"content": "{{ content }}"
+					}
+				},
+				"log": "Sent a request to users with {{ email }} and {{ content }}",
+				"get": {
+					"url": "/messagelist/{{ email }}"
+				}
+
+			},
+
+			{
+
+				"post": {
+					"url": "/",
+					"json": {
+						"messageTo": "jim",
+						"content": "same message over and over"
+					}
+				},
+				"get": {
+					"url": "/messagelist/jim"
+				}
+			}
+
+
+		]
+
+	}]
+}
