@@ -3,7 +3,6 @@ const Message = require('../models/messageObj.js');
 function createNewMessage(message){
     return new Promise(function(resolve, reject){
         message.messageTo = message.messageTo.split(";");
-        console.log(message.messageTo);
         if (message.messageTo.constructor == Array){
             for (var i = 0; i < message.messageTo.length; i++){
                Message.create({messageTo : message.messageTo[i], 

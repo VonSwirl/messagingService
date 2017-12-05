@@ -2,11 +2,16 @@ doctype html
 html(lang="en")
   link(rel='stylesheet', href='/src/main/bootstrap/bootstrap.min.css', type='text/css')
   head
-    include staff.html
+    if type == "staff"
+        include staff.html
+    else 
+        include customer.html
     title test
   body
     h1.title Message list for cust :  #{name}
     div.filtering 
+        input(type="hidden", id= "type", value= type)
+        input(type="hidden", id= "custid", value= custid)
         input(type="text", id="filterByContent", onkeyup="filter(1)", placeholder= "Filter messages by content", class= "filterbox")
         table(class= "table", id = "myTable")
             thead
@@ -20,6 +25,8 @@ html(lang="en")
                             td= mess.date.getDate() + "/" + mess.date.getMonth() + "/" + mess.date.getFullYear() + " @ " + mess.date.getHours() + ":" + mess.date.getMinutes()
                             td= mess.content
                             td= mess.doclink
+
+
 
 script.
   function sortTable(n) {
@@ -59,7 +66,11 @@ script.
         };
     }
     
-          
+script.
+      if (document.getElementById("type").value == "cust"){
+          document.getElementById("messageurl").href = "http://3amigosm.azurewebsites.net/message/?custid=" + document.getElementById("custid").value 
+          ;}
+
 script.
    function filter(n) {
             var input, filter, table, tr, td, i;

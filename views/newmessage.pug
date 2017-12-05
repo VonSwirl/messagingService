@@ -2,8 +2,12 @@ doctype html
 html(lang="en")
   link(rel='stylesheet', href='/src/main/bootstrap/bootstrap.min.css', type='text/css')
   head
-    include customer.html
-    title test
+  head
+    if type == "staff"
+        include staff.html
+    else 
+        include customer.html
+    title Messaging
   body
     h1 New Message
     form(action="/message", method="post")
@@ -20,3 +24,11 @@ html(lang="en")
     p Note - To send to multiple customers split with ';'
 
   
+  script.
+      if (type == "staff"){
+         document.getElementById("messageurl").href = "http://3amigosm.azurewebsites.net/message/newmessage";
+      }else{
+          document.getElementById("messageurl").href = "http://3amigosm.azurewebsites.net/message/?custid" + custid ;
+      }
+
+     
