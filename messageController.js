@@ -3,7 +3,7 @@ var app = express();
 var bodyparse = require('body-parser');
 var mongoose = require('mongoose');
 var config = require('./config');
-
+process.env.UV_THREADPOOL_SIZE = 128;
 mongoose.connect(config.databaseURL);
 mongoose.Promise = global.Promise;
 
@@ -28,4 +28,4 @@ app.use(function(err, req, res, next){
     res.status(422).send({err : err.message});
 });
 
-app.listen(process.env.PORT || 3000);
+const server = app.listen(process.env.PORT || 3000);

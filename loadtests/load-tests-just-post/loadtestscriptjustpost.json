@@ -5,12 +5,7 @@
 			"duration": 60,
 			"arrivalRate": 5
 		}, {	 "duration": 20,
-			  "arrivalRate": 50}
-, {	 "duration": 20,
-			  "arrivalRate": 100}
-
-
-],
+			  "arrivalRate": 200}],
 		"processor": "./fake-messages.js"
 	},
 
@@ -25,27 +20,9 @@
 						"messageTo": "{{ email }}",
 						"content": "{{ content }}"
 					}
-				},
-				"log": "Sent a request to post a message to  {{ email }} with {{ content }}",
-				"get": {
-					"url": "/messagelist/{{ email }}"
-				}
-
-			},
-
-			{
-
-				"post": {
-					"url": "/",
-					"json": {
-						"messageTo": "jim",
-						"content": "same message over and over"
-					}
-				},
-				"get": {
-					"url": "/messagelist/jim"
 				}
 			}
+
 
 
 		]
