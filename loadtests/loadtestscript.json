@@ -4,7 +4,8 @@
 		"phases": [{
 			"duration": 60,
 			"arrivalRate": 5
-		}],
+		}, {	 "duration": 20,
+			  "arrivalRate": 200}],
 		"processor": "./fake-messages.js"
 	},
 
@@ -13,7 +14,6 @@
 				"function": "generateRandomData"
 			},
 			{
-			  "function": "generateRandomData",
 				"post": {
 					"url": "/",
 					"json": {
@@ -21,7 +21,7 @@
 						"content": "{{ content }}"
 					}
 				},
-				"log": "Sent a request to users with {{ email }} and {{ content }}",
+				"log": "Sent a request to post a message to  {{ email }} with {{ content }}",
 				"get": {
 					"url": "/messagelist/{{ email }}"
 				}
